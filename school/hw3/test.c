@@ -9,8 +9,5 @@ void step(int32_t n, int32_t disk, int32_t rod){
         
     }
     else{
-        step(n-1, 3);
-        step(1, n, 2);
-        step()
     }
 }
