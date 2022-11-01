@@ -41,11 +41,15 @@ bool fullAdder(bool a, bool b, bool c){
 
 void multiplier(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y3){
     z0 = andGate(x0, y0);
-    z1 = halfAdder((andGate(x1, y0), andGate(x0, y1)));
+    z1 = halfAdder(andGate(x1, y0), andGate(x0, y1));
     z2 = halfAdder(fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2));
     z3 = halfAdder(fullAdder(fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2)), andGate(x1, y2), z2), andGate(x0, y3));
     z4 = fullAdder(fullAdder(halfAdder(andGate(x3, y1), fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2))), andGate(x2, y2), fullAdder(fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2)), andGate(x1, y2), z2)), andGate(x1, y3), z3);
     z5 = fullAdder(fullAdder(halfAdder(andGate(x3, y1), halfAdder(andGate(x3, y1), fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1)))), andGate(x3, y2), fullAdder(halfAdder(andGate(x3, y1), fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2))), andGate(x2, y2), fullAdder(fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2)), andGate(x1, y2), z2))), andGate(x2, y3), z4);
     z6 = fullAdder(fullAdder(halfAdder(andGate(x3, y1), halfAdder(andGate(x3, y1), fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1)))), andGate(x3, y2), fullAdder(halfAdder(andGate(x3, y1), fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2))), andGate(x2, y2), fullAdder(fullAdder(andGate(x3, y0), andGate(x2, y1), fullAdder(andGate(x2, y0), andGate(x1, y1), z1), andGate(x0, y2)), andGate(x1, y2), z2))), andGate(x3, z3), z5);
     z7 = z6;
+
+    printf("A = %d%d%d%d (2) = %d (10)\n", x3, x2, x1, x0, x3 * 8 + x2 * 4 + x1 * 2 + x0);
+    printf("B = %d%d%d%d (2) = %d (10)\n", y3, y2, y1, y0, y3 * 8 + y2 * 4 + y1 * 2 + y0);
+    printf("A x B = %d * %d = %d%d%d%d%d%d%d%d (2) = 154 (10)\n", x3 * 8 + x2 * 4 + x1 * 2 + x0, y3 * 8 + y2 * 4 + y1 * 2 + y0, z7, z6, z5, z4, z3, z2, z1, z0);
 }
