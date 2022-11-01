@@ -2,14 +2,14 @@
 #include <stdint.h>
 #include "hanoi.h"
 
-void step(int32_t n, int32_t a, int32_t b, int32_t c){
-    if(n == 1) {
-        printf("Move sheet from %d to %d\n", a, c);
+void step(int32_t n, int32_t from, int32_t mid, int32_t to){
+    if(n == 1){
+        printf("move disk %d to %d\n", n, to);
     }
     else {
-        step(n-1, 1, 2, 3);
-        step(1, 1, 3, 2);
-        step(n-1, 3, 1, 2);
+        step(n-1, from, to, mid);
+        printf("move disk %d to %d\n", n, to);
+        step(n-1, mid, from, to);
     }
 
     return;
