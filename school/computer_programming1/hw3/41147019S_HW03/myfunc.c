@@ -2,9 +2,9 @@
 #include <stdint.h>
 #include "myfunc.h"
 
-int32_t two = 0;   //a
-int32_t one = 0;   //b
-int32_t zero = 0;  //c
+static int32_t two = 0;   //a
+static int32_t one = 0;   //b
+static int32_t zero = 0;  //c
 
 // Setup a quadratic function.
 // This function must be called before all other functions.
