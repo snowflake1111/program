@@ -13,7 +13,7 @@ int main(){
         return 0;
     }
 
-    step2(n, 1, 3, 2);
+    step2(n);
 
     return 0;
 }

@@ -2,4 +2,5 @@
 
 #include <stdint.h>
 
-void step(int32_t n, int32_t a, int32_t b, int32_t c);
+void step1(int32_t n, int32_t from, int32_t mid, int32_t to);
+void step2(int32_t n);
