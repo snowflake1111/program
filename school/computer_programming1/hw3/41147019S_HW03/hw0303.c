@@ -12,6 +12,11 @@ int main(){
     printf("Please enter n (1-100): ");
     scanf("%d", &n);
 
+    if(r < 1 || r > 100 || n < 1 || n > 100){
+        printf("Error");
+        return 0;
+    }
+
     printf("Ans: %f\n", calculate(r, n));
     
     return 0;
