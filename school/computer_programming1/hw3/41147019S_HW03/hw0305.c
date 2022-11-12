@@ -81,4 +81,4 @@ void print(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y
     printf("A x B = %d * %d = %d%d%d%d%d%d%d%d (2) = %d (10)\n", x3 * 8 + x2 * 4 + x1 * 2 + x0, y3 * 8 + y2 * 4 + y1 * 2 + y0, z7, z6, z5, z4, z3, z2, z1, z0, (x3 * 8 + x2 * 4 + x1 * 2 + x0) * (y3 * 8 + y2 * 4 + y1 * 2 + y0));
     
     return;
-    
+}    
