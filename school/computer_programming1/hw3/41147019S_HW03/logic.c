@@ -45,6 +45,7 @@ bool fullAdder(bool a, bool b, bool c){
     return xorGate(xorGate(a, b), c);
 }
 
+/*
 void multiplier(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y3){
     z0 = andGate(x0, y0);
     z1 = andGate(x1, y0);
@@ -79,3 +80,4 @@ void print(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y
     
     return;
 }
+*/
