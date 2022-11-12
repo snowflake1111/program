@@ -11,6 +11,6 @@ bool xnorGate(bool, bool);
 bool nandGate(bool, bool);
 bool halfAdder(bool, bool);
 bool fullAdder(bool, bool, bool);
-void multiplier(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y3);
-void print(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y3);
+//void multiplier(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y3);
+//void print(bool x0, bool x1, bool x2, bool x3, bool y0, bool y1, bool y2, bool y3);
 #endif
