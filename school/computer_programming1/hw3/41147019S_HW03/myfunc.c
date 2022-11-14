@@ -38,7 +38,7 @@ double min( double m, double n ){
         small = n;
     }
     
-    if(two > 0){
+    if(small < (one/(-2*two)) && big > (one/(-2*two))){
         return value(one/(-2*two));
     }
     else{
@@ -62,7 +62,7 @@ double max( double m, double n ){
         small = n;
     }
     
-    if(two < 0){
+    if(small < (one/(-2*two)) && big > (one/(-2*two))){
         return value(one/(-2*two));
     }
     else{

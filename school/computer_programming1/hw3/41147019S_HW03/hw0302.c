@@ -1,17 +1,14 @@
-#include <stdio.h>
+#include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
-#include "mystddev.h"
+#include <stdio.h>
+#include <string.h>
 
-int main(){
-    int32_t n = 0;
-    
-    scanf("%d", &n);
-    
-    while(n != -1){
-        printf("%f\n", get_stddev(n));
-        
-        scanf("%d", &n);
+#include "mystddev.h"
+int main() {
+    int32_t input;
+    while (~(scanf("%d", &input))) {
+        printf("the Standard Deviation is %.6g\n", get_stddev(input));
     }
-    
     return 0;
 }
