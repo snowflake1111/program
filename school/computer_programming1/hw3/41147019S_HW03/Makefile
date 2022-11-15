@@ -6,8 +6,8 @@ all:
 	gcc -c hw0303.c resistance.c
 	gcc hw0303.o resistance.o -o hw0303
 	gcc -c hw0304-1.c hanoi.c
-	gcc hw0304-1.o hanoi.o -o hw0304-1
+	gcc hw0304-1.o hanoi.o -o hw0304-1 -lm
 	gcc -c hw0304-2.c hanoi.c
-	gcc hw0304-2.o hanoi.o -o hw0304-2
+	gcc hw0304-2.o hanoi.o -o hw0304-2 -lm
 	gcc -c hw0305.c logic.c smallten.c
 	gcc hw0305.o logic.o smallten.o -o hw0305
