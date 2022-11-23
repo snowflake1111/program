@@ -2,6 +2,8 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
         "smallten.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "myfunc.h": "c",
+        "stdint.h": "c"
     }
 }
