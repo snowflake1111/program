@@ -28,40 +28,99 @@ int main(){
         printf(RESET"Input [0-6]: ");
         scanf("%d", &input);
         
+        int32_t temp1[3][3] = {{0}, {0}};
+        int32_t temp2[12] = {0};
+        
         if(input == 0){
             break;
         }
-        else if(input == 1 || input == 2 || input == 3){
-            int32_t temp1[3][3] = {{0}, {0}};
-            int32_t temp2[12] = {0};
-            
+        else if(input == 1 || input == 2 || input == 3){      
             if(input == 1){
                 for(int32_t i=0 ; i<3 ; i++){
                     for(int32_t j=0 ; j<3 ; j++){
-                        temp1[i][j] == color[i][j+3];
+                        temp1[i][j] = color[i][j+3];
                     }
                 }
                 for(int32_t i=0 ; i<3 ; i++){
                     for(int32_t j=0 ; j<3 ; j++){
-                        temp1[i][j+3] == color[j][5-i];
+                        color[i][j+3] = temp1[j][2-i];
                     }
                 }
             }
-            
+         
             for(int32_t i=0 ; i<12 ; i++){
                 temp2[i] = color[input+2][i];
             }
-            for(int32_t i=0 ; i<12 ; i++){
-                color[input+2][i] = temp2;
+            for(int32_t i=0 ; i<3 ; i++){
+                color[input+2][i] = temp2[i+9];
+            }
+            for(int32_t i=0 ; i<9 ; i++){
+                color[input+2][i+3] = temp2[i];
+            }
+
+            if(input == 3){
+                for(int32_t i=0 ; i<3 ; i++){
+                    for(int32_t j=0 ; j<3 ; j++){
+                        temp1[i][j] = color[i+6][j+3];
+                    }
+                }
+                for(int32_t i=0 ; i<3 ; i++){
+                    for(int32_t j=0 ; j<3 ; j++){
+                        color[i+6][j+3] = temp1[2-j][i];
+                    }
+                }
             }
         }
-        else if(input == 4 || input == 5 || input == 6){
-            
+        else if(input == 4 || input == 5 || input == 6){  
+            if(input == 4){
+                for(int32_t i=0 ; i<3 ; i++){
+                    for(int32_t j=0 ; j<3 ; j++){
+                        temp1[i][j] = color[i+3][j];
+                    }
+                }
+                for(int32_t i=0 ; i<3 ; i++){
+                    for(int32_t j=0 ; j<3 ; j++){
+                        color[i+3][j] = temp1[2-j][i];
+                    }
+                }
+            }
+         
+            for(int32_t i=0 ; i<9 ; i++){
+                temp2[i] = color[i][input-1];
+            }
+            for(int32_t i=0 ; i<3 ; i++){
+                temp2[i+9] = color[i+3][15-input];
+            }
+
+            for(int32_t i=0 ; i<3 ; i++){
+                color[i][input-1] = temp2[11-i];
+            }
+            for(int32_t i=0 ; i<6 ; i++){
+                color[i+3][input-1] = temp2[i];
+            }
+            for(int32_t i=0 ; i<3 ; i++){
+                color[i+3][15-input] = temp2[i+6];
+            }
+
+            if(input == 6){
+                for(int32_t i=0 ; i<3 ; i++){
+                    for(int32_t j=0 ; j<3 ; j++){
+                        temp1[i][j] = color[i+3][j+6];
+                    }
+                }
+                for(int32_t i=0 ; i<3 ; i++){
+                    for(int32_t j=0 ; j<3 ; j++){
+                        color[i+3][j+6] = temp1[j][2-i];
+                    }
+                }
+            }
         }
         else{
             printf("Wrong input\n");
             continue;
         }
+
+        print(color);
     }
     
     return 0;
