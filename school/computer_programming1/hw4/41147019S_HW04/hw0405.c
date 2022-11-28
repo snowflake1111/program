@@ -3,12 +3,12 @@
 #include "basic.h"
 
 void cell_calculate(int32_t i, int32_t j, int32_t ID1[5][5], int32_t ID2[5][5], int32_t point[5][5]);
-void step(int32_t i, int32_t j, int32_t ID1[5][5], int32_t ID2[5][5], int32_t point[5][5], int32_t final_point[70], int32_t temp, int32_t save, int32_t index, int32_t type[5][5], int32_t result_type[8][70]);
+void step(int32_t i, int32_t j, int32_t ID1[5][5], int32_t ID2[5][5], int32_t point[5][5], int32_t final_point[70], int32_t temp, int32_t save, int32_t index, int32_t type[5][5], int32_t result_type[70][9], int32_t count);
 
 int main(){
     int32_t point[5][5] = {{0}, {0}, {0}, {0}, {0}};
     int32_t final_point[70] = {0};
-    int32_t result_type[8][70] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
+    int32_t result_type[70][9] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
     int32_t top1 = 0;
     int32_t top2 = 0;
     int32_t top3 = 0;
@@ -19,23 +19,26 @@ int main(){
         }
     }
     
-    step(0, 1, AttributeID1, AttributeID2, point, final_point, 0, 0, 0, TypeOfAttribute, result_type);
-    step(1, 0, AttributeID1, AttributeID2, point, final_point, 0, 0, 0, TypeOfAttribute, result_type);
+    step(0, 1, AttributeID1, AttributeID2, point, final_point, 0, 0, 0, TypeOfAttribute, result_type, -1);
+    step(1, 0, AttributeID1, AttributeID2, point, final_point, 0, 0, 0, TypeOfAttribute, result_type, -1);
 
 
     //特殊規則
-    if()    
+ //   if()    
     
 
     for(int32_t i=0 ; i<5 ; i++){
         for(int32_t j=0 ; j<5 ; j++){
-            printf("%d", point[i][j]);
+            printf("%d ", point[i][j]);
         }
+        printf("\n");
     }
 
     for(int32_t i=0 ; i<70 ; i++){
-        printf("%d", final_point[i]);
+        printf("%d ", final_point[i]);
     }
+
+    printf("\n");
 
     //判斷前三    
     
@@ -46,57 +49,74 @@ int main(){
     
     printf("Target Boss required point: %d\n", bossPoint);
     
-    if(){
+//    if(){
         printf("\033[32mReady Perfectly!\n\033[0m");
-    }
-    else{
+//    }
+//    else{
         printf("\033[31mGonna be OK.\n\033[0m");
-    }
+//    }
     
     return 0;
 }
 
 void cell_calculate(int32_t i, int32_t j, int32_t ID1[5][5], int32_t ID2[5][5], int32_t point[5][5]){
-    if(ID1 == 1 || ID2 == 1){
+    if(ID1[i][j] == 1 || ID2[i][j] == 1){
         point[i][j] = point[i][j] + 125;
     }
-    if(ID1 == 2 || ID2 == 2){
+    if(ID1[i][j] == 2 || ID2[i][j] == 2){
         point[i][j] = point[i][j] + 100;
     }
-    if(ID1 == 3 || ID2 == 3){
+    if(ID1[i][j] == 3 || ID2[i][j] == 3){
         point[i][j] = point[i][j] + 75;
     }
-    if(ID1 == 4 || ID2 == 4){
+    if(ID1[i][j] == 4 || ID2[i][j] == 4){
         point[i][j] = point[i][j] + 50;
     }
-    if(ID1 == 5 || ID2 == 5){
+    if(ID1[i][j] == 5 || ID2[i][j] == 5){
         point[i][j] = point[i][j] + 50;
     }
-    if(ID1 == 6 || ID2 == 6){
+    if(ID1[i][j] == 6 || ID2[i][j] == 6){
         point[i][j] = point[i][j] + 25;
     }
-    if(ID1 == 7 || ID2 == 7){
+    if(ID1[i][j] == 7 || ID2[i][j] == 7){
         point[i][j] = point[i][j] + 10;
     }
 }
 
-void step(int32_t i, int32_t j, int32_t ID1[5][5], int32_t ID2[5][5], int32_t point[5][5], int32_t final_point[70], int32_t temp, int32_t save, int32_t index, int32_t type[5][5], int32_t result_type[8][70]){
+void step(int32_t i, int32_t j, int32_t ID1[5][5], int32_t ID2[5][5], int32_t point[5][5], int32_t final_point[70], int32_t temp, int32_t save, int32_t index, int32_t type[5][5], int32_t result_type[70][9], int32_t count){
+    count = count + 1;
     temp = point[i][j];
-    result_type
-    
+    save = save + temp;
+    result_type[index][count] = type[i][j];
+    result_type[index+1][count] = type[i][j];
+
     if(i < 4 && j < 4){
-        step(i+1, j, ID1, ID2, point, final_point, 0, save, index);
-        step(i, j+1, ID1, ID2, point, final_point, 0, save, index);
+        step(i, j+1, ID1, ID2, point, final_point, 0, save, index, type, result_type, count);
+
+        for(int32_t k=0 ; k<8 ; k++){
+            result_type[index+1][k] = result_type[index][k];
+        }
+
+        for(int32_t k=0 ; k<70 ; k++){
+            printf("%d ", final_point[k]);
+        }
+
+        step(i+1, j, ID1, ID2, point, final_point, 0, save, index, type, result_type, count);
     }
     else if(i == 4 && j < 4){
-        step(i, j+1, ID1, ID2, point, final_point, 0, save, index);
+        step(i, j+1, ID1, ID2, point, final_point, 0, save, index, type, result_type, count);
     }
-    else if(i == 4 && j < 4){
-        step(i+1, j, ID1, ID2, point, final_point, 0, save, index);
+    else if(i < 4 && j == 4){
+        step(i+1, j, ID1, ID2, point, final_point, 0, save, index, type, result_type, count);
     }
     else{
         final_point[index] = save;
         index = index + 1;
-        save = save - temp;
-    }    
+    }   
+
+    save = save - temp;
+    count = count - 1;
+
+    printf("\n");
+
 }

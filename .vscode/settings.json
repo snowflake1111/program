@@ -4,6 +4,7 @@
         "smallten.h": "c",
         "stdio.h": "c",
         "myfunc.h": "c",
-        "stdint.h": "c"
+        "stdint.h": "c",
+        "basic.h": "c"
     }
 }
