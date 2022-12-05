@@ -1,6 +1,6 @@
 #ifndef BASIC_H
 #define BASIC_H #include<stdint.h>
-static int32_t bossPoint = 1055;
+static int32_t bossPoint = 1061;
 static int32_t TypeOfAttribute[5][5]={
     {0,3,1,2,6},
     {1,5,1,4,7},
