@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdint.h>
 #define RED "\x1B[0;31m"    //1
-#define RED_L "\x1B[1;31m"  //2
+#define ORN "\x1B[38;5;208m"  //2
 #define GRN "\x1B[0;32m"    //3
 #define YEL "\x1B[0;33m"    //4
 #define BLU "\x1B[0;34m"    //5
 #define RESET "\x1B[0m"     //6
 
 void print(int32_t color[][12]);
+void all_print(int32_t color[][12]);
 
 int main(){
     int32_t input = 0;
@@ -121,6 +122,9 @@ int main(){
         }
 
         print(color);
+
+        printf(RESET);
+        all_print(color);
     }
     
     return 0;
@@ -133,7 +137,7 @@ void print(int32_t color[][12]){
                 printf(RED"* ");
             }
             else if(color[i][j] == 2){
-                printf(RED_L"* ");
+                printf(ORN"* ");
             }
             else if(color[i][j] == 3){
                 printf(GRN"* ");
@@ -153,7 +157,7 @@ void print(int32_t color[][12]){
             printf(RED"*\n");
         }
         else if(color[i][5] == 2){
-            printf(RED_L"*\n");
+            printf(ORN"*\n");
         }
         else if(color[i][5] == 3){
             printf(GRN"*\n");
@@ -166,6 +170,58 @@ void print(int32_t color[][12]){
         }
         else if(color[i][5] == 6){
             printf(RESET"*\n");
+        }
+    }
+    
+    return;
+}
+
+void all_print(int32_t color[][12]){
+    for(int32_t i=0 ; i<9 ; i++){
+        for(int32_t j=0 ; j<11 ; j++){
+            if(color[i][j] == 1){
+                printf(RED"* ");
+            }
+            else if(color[i][j] == 2){
+                printf(ORN"* ");
+            }
+            else if(color[i][j] == 3){
+                printf(GRN"* ");
+            }
+            else if(color[i][j] == 4){
+                printf(YEL"* ");
+            }
+            else if(color[i][j] == 5){
+                printf(BLU"* ");
+            }
+            else if(color[i][j] == 6){
+                printf(RESET"* ");
+            }
+            else{
+                printf("  ");
+            }
+        }
+        
+        if(color[i][11] == 1){
+            printf(RED"*\n");
+        }
+        else if(color[i][11] == 2){
+            printf(ORN"*\n");
+        }
+        else if(color[i][11] == 3){
+            printf(GRN"*\n");
+        }
+        else if(color[i][11] == 4){
+            printf(YEL"*\n");
+        }
+        else if(color[i][11] == 5){
+            printf(BLU"*\n");
+        }
+        else if(color[i][11] == 6){
+            printf(RESET"*\n");
+        }
+        else{
+            printf("  \n");
         }
     }
     

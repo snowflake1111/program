@@ -2,13 +2,21 @@
 #include <stdint.h>
 #include "mine.h"
 
-void find_good_cells( const int32_t board[16][30], int32_t row[480], int32_t col[480] ){
+int find_good_cells( const int32_t board[16][30], int32_t row[480], int32_t col[480] ){
     int32_t count[16][30] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
     int32_t flag[16][30] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
     int32_t real_board[16][30] = {{0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}, {0}};
     int32_t max = 0;
     int32_t value = 0;
-    
+    int32_t total = 0;
+
+    for(int32_t i=0 ; i<480 ; i++){
+        row[i] = -1;
+    }
+    for(int32_t i=0 ; i<480 ; i++){
+        col[i] = -1;
+    }
+
     //判斷真正值
     for(int32_t i=0 ; i<16 ; i++){
         for(int32_t j=0 ; j<30 ; j++){
@@ -19,7 +27,7 @@ void find_good_cells( const int32_t board[16][30], int32_t row[480], int32_t col
     //印出真正值
     for(int32_t i=0 ; i<16 ; i++){
         for(int32_t j=0 ; j<30 ; j++){
-            printf("%d ", real_board[i][j]);
+            printf("%3d ", real_board[i][j]);
         }
         
         printf("\n");
@@ -48,7 +56,7 @@ void find_good_cells( const int32_t board[16][30], int32_t row[480], int32_t col
     //印出count
     for(int32_t i=0 ; i<16 ; i++){
         for(int32_t j=0 ; j<30 ; j++){
-            printf("%d ", count[i][j]);
+            printf("%3d ", count[i][j]);
         }
         
         printf("\n");
@@ -57,12 +65,17 @@ void find_good_cells( const int32_t board[16][30], int32_t row[480], int32_t col
     for(int32_t i=0 ; i<16 ; i++){
         for(int32_t j=0 ; j<30 ; j++){
             if(count[i][j] == max){
+                row[total] = i;
+                col[total] = j;
+
+                total = total + 1;
+                
                 printf("row %d col %d\n", i, j);
             }
         }
     }
     
-    return;
+    return 0;
 }
 
 void change_board(int32_t a, int32_t b, const int32_t board[16][30], int32_t real_board[16][30]){

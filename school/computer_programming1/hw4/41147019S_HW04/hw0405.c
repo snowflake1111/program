@@ -103,7 +103,7 @@ int32_t final_point[70], int32_t type[5][5], int32_t *count_ptr){
         
         printf("score: %d", score);
         printf("\n");
-        printf("final point: %d", final_point[*count_ptr]);
+        printf("final point: %d", final_point[*count_ptr - 1]);
         printf("\n");
         
         printf("x: ");
