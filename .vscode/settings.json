@@ -5,6 +5,8 @@
         "stdio.h": "c",
         "myfunc.h": "c",
         "stdint.h": "c",
-        "basic.h": "c"
+        "basic.h": "c",
+        "string.h": "c",
+        "riemann.h": "c"
     }
 }
