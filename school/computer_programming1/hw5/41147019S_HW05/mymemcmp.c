@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 #include "mymemcmp.h"
-//尚未判錯與特別輸入
+
 int mymemcmp(const void *s1, const void *s2, size_t n){
     unsigned char *s1_ptr = (char *)s1;
     unsigned char *s2_ptr = (char *)s2;
