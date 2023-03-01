@@ -1,0 +1,34 @@
+<script>
+    
+    function declare(){
+        var name = "Mamamoo";
+        var a = " is the best group";
+        alert(name + a);
+    }
+    
+    declare();
+    
+    function member(name, position){
+        alert(name + " is " + position + ".");
+    }
+    
+    var people = ["Solar", "Moonbyul", "Wheein", "Hwasa"];
+    
+    member(people[0], "leader and singer");
+    member(people[1], "rapper and performer");
+    member(people[2], "singer and performer");
+    member(people[3], "rapper and singer");
+    
+    var Solar = {
+        age: 32,
+        position: "Leader, Singer",
+        songs: ["Hello", "Star Wind Flower Sun", "Please listen in the evening"],
+    };
+    
+    alert(Solar.position);
+    
+    for(i=0 ; i<Solar.songs.length ; i++){
+        alert(Solar.songs[i]);
+    }
+    
+</script>
